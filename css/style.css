@@ -1,0 +1,61 @@
+@charset "UTF-8";
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Адаптивный размер текста для всего сайта */
+body {
+  /* Растягиваем body на всю высоту экрана */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(12px, 3vw, 18px);
+  line-height: 1.55;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #727272;
+}
+
+h1 {
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(18px, 3vw, 24px);
+  line-height: 1.35;
+  text-align: center;
+  margin-bottom: 0.9vw;
+}
+
+h2 {
+  font-family: "Lato", sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, 3vw, 22px);
+  line-height: 1.35;
+  text-align: center;
+  margin-bottom: 0.5vw;
+}
+
+.section {
+  /* Главный контент занимает все свободное место, выталкивая футер вниз */
+  flex: 1;
+  margin: 0 auto;
+}
+
+.rounded-line {
+  width: 80%;
+  height: 0.5px;
+  /* Максимальная толщина в центре */
+  margin: 25px auto;
+  /* Градиент от прозрачного к плотному цвету и снова к прозрачному */
+  background: linear-gradient(to right, transparent 0%, #a1a1a1 50%, transparent 100%);
+}/*# sourceMappingURL=style.css.map */
