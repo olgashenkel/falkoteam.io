@@ -1,4 +1,4 @@
-const JSON_NEW_FACTS = './new_facts.json';
+const JSON_NEW_FACTS = 'json/new_facts.json';
 
 const track = document.getElementById('track');
 const dotsContainer = document.getElementById('dotsContainer');
@@ -172,6 +172,55 @@ track.addEventListener('transitionend', () => {
 // Слушатели для стрелок с обработчиком ручного клика
 document.getElementById('nextBtn').addEventListener('click', () => handleNavClick(1));
 document.getElementById('prevBtn').addEventListener('click', () => handleNavClick(-1));
+
+
+
+// 10. ДОБАВЛЕНИЕ ПОДДЕРЖКИ СВАЙПОВ НА СМАРТФОНАХ
+let touchStartX = 0;
+let touchEndX = 0;
+let isSwiping = false;
+
+// Фиксируем начало касания
+track.addEventListener('touchstart', (e) => {
+  if (isTransitioning) return; // Если слайдер анимируется, игнорируем свайп
+  touchStartX = e.touches[0].clientX;
+  isSwiping = true;
+  stopAutoPlay(); // Приостанавливаем таймер, пока палец лежит на экране
+}, { passive: true });
+
+// Отслеживаем траекторию движения пальца
+track.addEventListener('touchmove', (e) => {
+  if (!isSwiping) return;
+  touchEndX = e.touches[0].clientX;
+}, { passive: true });
+
+// Обрабатываем завершение касания
+track.addEventListener('touchend', () => {
+  if (!isSwiping) return;
+  isSwiping = false;
+
+  const swipeDistance = touchStartX - touchEndX;
+  const minSwipeDistance = 50; // Порог чувствительности свайпа в пикселях
+
+  // Проверяем, было ли движение пальца достаточно длинным
+  if (Math.abs(swipeDistance) > minSwipeDistance && touchEndX !== 0) {
+    if (swipeDistance > 0) {
+      // Свайп влево -> Показываем следующий слайд
+      changeSlide(1);
+    } else {
+      // Свайп вправо -> Показываем предыдущий слайд
+      changeSlide(-1);
+    }
+  }
+
+  // Перезапускаем автопрокрутку в любом случае
+  startAutoPlay();
+
+  // Обнуляем координаты
+  touchStartX = 0;
+  touchEndX = 0;
+});
+
 
 // Инициализация
 loadCarousel();

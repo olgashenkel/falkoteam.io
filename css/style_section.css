@@ -1,7 +1,14 @@
 @charset "UTF-8";
+.section {
+  /* Главный контент занимает все свободное место, выталкивая футер вниз */
+  flex: 1;
+  width: 100%;
+}
+
 /* Главный контейнер (окно + точки) */
 .carousel-wrapper {
-  width: 100vw;
+  position: relative;
+  width: 100%;
   max-height: 65vh;
   margin-bottom: 25px;
 }
@@ -10,7 +17,7 @@
 }
 .carousel-window {
   position: relative;
-  width: 100vw;
+  width: 100%;
   max-height: 65vh;
   overflow: hidden;
   background-color: #ffffff;
@@ -28,7 +35,7 @@
 }
 .carousel-slide {
   flex: 0 0 100%;
-  width: 100vw;
+  width: 100%;
   max-height: 65vh;
   position: relative;
   display: flex;
@@ -47,7 +54,7 @@
   pointer-events: none;
 }
 .carousel-slide img {
-  width: 100vw;
+  width: 100%;
   max-height: 65vh;
   -o-object-fit: contain;
      object-fit: contain;
