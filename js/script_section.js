@@ -118,7 +118,7 @@ function startAutoPlay() {
   stopAutoPlay(); // Очищаем старый таймер на всякий случай
   autoPlayTimer = setInterval(() => {
     changeSlide(1);
-  }, 7000); // 7000 миллисекунд
+  }, 5000); // 5000 миллисекунд
 }
 
 function stopAutoPlay() {
@@ -132,7 +132,7 @@ function handleNavClick(direction) {
   if (isTransitioning) return;
   stopAutoPlay(); // Останавливаем автопрокрутку при ручном действии
   changeSlide(direction);
-  startAutoPlay(); // Запускаем заново с чистыми 10 секундами
+  startAutoPlay(); // Запускаем заново с чистыми 5 секундами
 }
 
 function changeSlide(direction) {
