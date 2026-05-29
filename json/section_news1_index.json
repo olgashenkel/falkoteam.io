@@ -1,0 +1,44 @@
+[
+  {
+    "url": "#",
+    "image": "image/content/new1_content/1.jpg",
+    "alt": "Новость 1",
+    "title": "Заголовок новости 1",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new1_content/2.jpg",
+    "alt": "Новость 2",
+    "title": "Заголовок новости 2",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new1_content/3.jpg",
+    "alt": "Новость 3",
+    "title": "Заголовок новости 3",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new1_content/4.jpg",
+    "alt": "Новость 4",
+    "title": "Заголовок новости 4",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new1_content/5.jpg",
+    "alt": "Новость 5",
+    "title": "Заголовок новости 5",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new1_content/6.jpg",
+    "alt": "Новость 6",
+    "title": "Заголовок новости 6",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  }
+]

@@ -1,0 +1,137 @@
+@charset "UTF-8";
+/* ------------- Header (строка меню) ------------- */
+.header-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #2e2d2d;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+  box-sizing: border-box;
+}
+.header-menu.scrolled {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(0.7px);
+  box-shadow: 0 2px 10px rgba(2, 2, 2, 0.1);
+}
+.header-menu__navbar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+.header-menu__navbar.left {
+  padding-left: 10px;
+  height: 50px;
+}
+.header-menu__navbar.right {
+  justify-content: flex-end;
+  gap: 20px;
+  padding-right: 20px;
+}
+.header-menu__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.header-menu__logo {
+  max-height: 180px;
+}
+.header-menu__imglogo {
+  max-height: 40px;
+}
+.header-menu__img-nav-item {
+  max-height: 25px;
+}
+.header-menu__burger {
+  /* Контейнер кнопки */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  /* Общие стили для всех трех линий */
+}
+.header-menu__burger.line {
+  height: 3px;
+  background-color: #000000;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+.header-menu__burger {
+  /* Стили при открытом меню (класс .active) - Преобразование в Х */
+}
+.header-menu__burger.active .line:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.header-menu__burger.active .line:nth-child(2) {
+  opacity: 0;
+}
+.header-menu__burger.active .line:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+.header-menu__burger {
+  /* Выезжающая панель меню */
+}
+.header-menu__burger_side-menu {
+  position: fixed;
+  top: 50px;
+  right: 0px;
+  min-width: 10vw;
+  max-height: 80vh;
+  background-color: rgb(255, 255, 255);
+  z-index: 999;
+  padding: 5px;
+  /* Сдвигаем меню вправо на всю его ширину (оно полностью прячется) */
+  transform: translateX(100%);
+  /* Эффект плавности: кубическая кривая (cubic-bezier) делает старт и финиш мягкими */
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  /* Отображение меню при активации */
+}
+.header-menu__burger_side-menu.active {
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  transform: translateX(0);
+}
+.header-menu__burger_side-menu ul {
+  list-style: none;
+  padding: 8px 10px;
+}
+.header-menu__burger_side-menu li a {
+  display: block;
+  padding: 8px 10px;
+  transition: background 0.2s;
+  font-size: clamp(12px, 3vw, 16px);
+}
+.header-menu__burger_side-menu li a:hover {
+  text-decoration: underline;
+}
+.header-menu__burger {
+  /* Затемнение фона при открытом блоке меню */
+}
+.header-menu__burger_menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease-in-out;
+}
+.header-menu__burger_menu-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}/*# sourceMappingURL=style_header.css.map */
