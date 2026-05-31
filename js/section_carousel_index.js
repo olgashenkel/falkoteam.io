@@ -26,7 +26,7 @@ async function loadCarousel() {
   }
 }
 
-// 2. Сборка структуры через методы DOM (оптимизировано)
+// 2. Сборка структуры через методы DOM 
 function renderCarousel() {
   // Очищаем контейнер перед добавлением новых элементов
   track.textContent = ''; 

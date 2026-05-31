@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/section_carousel_index.css">
   <link rel="stylesheet" href="css/section_news1_index.css">
+  <link rel="stylesheet" href="css/section_news2_index.css">
   <link rel="stylesheet" href="css/button_up.css">
   <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/media_tablet.css">
-  <link rel="stylesheet" href="css/media_mobile.css">
+
 
 
   <link rel="shortcut icon" href="image/favicon/favicon.ico" type="image/x-icon" />
@@ -32,6 +32,7 @@
   <script src="js/header.js" defer></script>
   <script src="js/section_carousel_index.js" defer></script>
   <script src="js/section_news1_index.js" defer></script>
+  <script src="js/section_news2_index.js" defer></script>
   <script src="js/button_up.js" defer></script>
   <script src="js/footer.js" defer></script>
 
@@ -42,30 +43,42 @@
 <body>
   <site-header></site-header>
 
+  <main class="main-content">
 
-  <section class="section">
-    <!-- Карусель "Факты о тхэквондо" -->
-    <div class="carousel-wrapper">
-      <div class="carousel-window">
-        <button class="nav-btn prev" id="prevBtn">&#10094;</button>
-        <button class="nav-btn next" id="nextBtn">&#10095;</button>
-        <div class="carousel-dots" id="dotsContainer"></div>
-        <div class="carousel-track" id="track"></div>
+    <section class="section">
+      <!-- Карусель "Факты о тхэквондо" -->
+      <div class="carousel-wrapper">
+        <div class="carousel-window">
+          <button class="nav-btn prev" id="prevBtn">&#10094;</button>
+          <button class="nav-btn next" id="nextBtn">&#10095;</button>
+          <div class="carousel-dots" id="dotsContainer"></div>
+          <div class="carousel-track" id="track"></div>
+        </div>
       </div>
-    </div>
-
-    <hr class="gradient-line">
-
-    <!-- Новостной блок (вариант № 1) -->
-    <div class="news">
-      <h1>Информация о тхэквондо или новости (вариант № 1)</h1>
-      <div class="news-grid" id="news-grid"></div>
-    </div>
 
 
+      <hr class="gradient-line">
 
-  </section>
+      <!-- Новостной блок (вариант № 1) -->
+      <div class="news1">
+        <h1>Информация о тхэквондо или новости (вариант № 1)</h1>
+        <div class="news1-grid" id="news1-grid"></div>
+      </div>
 
+
+      <hr class="gradient-line">
+
+      <!-- Новостной блок (вариант № 2) -->
+      <div class="news2">
+        <h1>Информация о тхэквондо или новости (вариант № 2)</h1>
+        <div class="news2-grid" id="news2-grid"></div>
+      </div>
+
+      <hr class="gradient-line">
+
+    </section>
+
+  </main>
   <!-- Кнопка Наверх -->
   <scroll-to-top></scroll-to-top>
 

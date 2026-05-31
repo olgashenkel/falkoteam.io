@@ -1,29 +1,28 @@
-const NEWS_DATA_PATH = 'json/section_news1_index.json'; 
+const NEWS1_DATA_PATH = 'json/section_news1_index.json'; 
 
 // Асинхронная функция для загрузки JSON-файла
-async function loadNewsData() {
-    const grid = document.getElementById('news-grid');
+async function loadNews1Data() {
+    const grid = document.getElementById('news1-grid');
     if (!grid) return;
 
-    // Включаем индикатор загрузки перед запросом
-    grid.innerHTML = '<div class="news-spinner">Загрузка...</div>';
+    grid.innerHTML = '<div class="news1-spinner">Загрузка...</div>';
 
     try {
-        const response = await fetch(NEWS_DATA_PATH);
+        const response = await fetch(NEWS1_DATA_PATH);
         
         if (!response.ok) {
             throw new Error(`Ошибка загрузки: ${response.status}`);
         }
         
-        const newsItems = await response.json();
-        renderNewsShort(newsItems, grid);
+        const news1Items = await response.json();
+        renderNews1Short(news1Items, grid);
     } catch (error) {
         console.error('Не удалось загрузить новости:', error);
-        grid.innerHTML = '<p class="news-empty">Не удалось загрузить новости.</p>';
+        grid.innerHTML = '<p class="news1-empty">Не удалось загрузить новости.</p>';
     }
 }
 
-// Функция для защиты от XSS
+// функция для защиты от XSS
 function escapeHTML(str) {
     if (!str) return '';
     return String(str)
@@ -31,34 +30,51 @@ function escapeHTML(str) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+        .replace(/'/g, '&#39;'); // ИСПРАВЛЕНО: синтаксис и замена на безопасный код
+}
+
+// Валидация URL для защиты от javascript: и vbscript:
+function safeURL(url) {
+    if (!url) return '#';
+    const trimmed = url.trim().toLowerCase();
+    if (trimmed.startsWith('javascript:') || trimmed.startsWith('vbscript:')) {
+        return '#';
+    }
+    return url;
 }
 
 // Функция отрисовки карточек в DOM
-function renderNewsShort(newsItems, grid) {
-    if (!Array.isArray(newsItems) || newsItems.length === 0) {
-        grid.innerHTML = '<p class="news-empty">Новости временно недоступны.</p>';
+function renderNews1Short(news1Items, grid) {
+    if (!Array.isArray(news1Items) || news1Items.length === 0) {
+        grid.innerHTML = '<p class="news1-empty">Новости временно недоступны.</p>';
         return;
     }
 
-    // Очищаем spinner и выводим ВСЕ карточки из массива newsItems
-    grid.innerHTML = newsItems.map(item => `
-        <a href="${escapeHTML(item.url || '#')}" class="news-card">
-          <div class="news-card__image-wrap">
-            <img src="${escapeHTML(item.image || '')}" alt="${escapeHTML(item.alt || '')}" class="news-card__image" loading="lazy">
+    const htmlContent = news1Items.map(item => {
+        const safeItem = item || {}; 
+        const link = safeURL(safeItem.url);
+        
+        return `
+        <a href="${escapeHTML(link)}" class="news1-card" rel="noopener noreferrer">
+          <div class="news1-card__image-wrap">
+            <img src="${escapeHTML(safeItem.image || '')}" alt="${escapeHTML(safeItem.alt || '')}" class="news1-card__image" loading="lazy">
           </div>
-          <div class="news-card__content">
-            <div class="news-card__header">
-              <h3 class="news-card__title">${escapeHTML(item.title || 'Без названия')}</h3>
-            
+          <div class="news1-card__content">
+            <div class="news1-card__header">
+              <h3 class="news1-card__title">${escapeHTML(safeItem.title || 'Без названия')}</h3>
             </div>
-            <p class="news-card__text">${escapeHTML(item.text || '')}</p>
+            <p class="news1-card__text">${escapeHTML(safeItem.text || '')}</p>
           </div>
         </a>
-    `).join('');
+        `;
+    }).join('');
+
+    grid.innerHTML = htmlContent;
 }
 
 // Запуск при полной загрузке DOM
-document.addEventListener('DOMContentLoaded', () => {
-    loadNewsData(); 
-});
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadNews1Data);
+} else {
+    loadNews1Data();
+}

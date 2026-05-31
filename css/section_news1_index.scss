@@ -1,11 +1,11 @@
 /* Сетка: по 3 карточки в ряд с ограничением размера */
-.news {
+.news1 {
     overflow-x: hidden;
     box-sizing: border-box;
 
     &-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 550px));
+        grid-template-columns: repeat(3, minmax(0, 450px));
         justify-content: center;
         gap: 24px;
         padding: 20px;
@@ -50,7 +50,7 @@
                     left: 0;
                     width: 100%;
                     height: 100%;
-                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.6) 100%);
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
                     z-index: 2;
                 }
             }
@@ -84,15 +84,12 @@
         /* Заголовок новости */
         &__title {
             margin: 0;
-            font-size: 20px;
-            font-weight: 600;
-            line-height: 1.3;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         &__text {
             margin: 0;
-            font-size: 14px;
+            font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.5;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
@@ -102,7 +99,7 @@
 
 
 // крутящийся лоадер для индикатора загрузки
-.news-spinner {
+.news1-spinner {
     margin: 20px auto;
     width: 40px;
     height: 40px;
@@ -127,14 +124,14 @@
 
 /* Адаптивность для планшетов */
 @media (max-width: 992px) {
-    .news-grid {
+    .news1-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 /* Адаптивность для мобильных */
 @media (max-width: 650px) {
-    .news-grid {
+    .news1-grid {
         grid-template-columns: repeat(1, 1fr);
     }
 }

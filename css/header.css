@@ -134,4 +134,10 @@
 .header-menu__burger_menu-overlay.active {
   opacity: 1;
   pointer-events: auto;
-}/*# sourceMappingURL=style_header.css.map */
+}
+
+@media (max-width: 425px) {
+  .header-menu__imglogo {
+    max-height: 32px;
+  }
+}/*# sourceMappingURL=header.css.map */

@@ -152,3 +152,9 @@
         }
     }
 }
+
+@media (max-width: 425px) {
+    .header-menu__imglogo {
+        max-height: 32px;
+    }
+}

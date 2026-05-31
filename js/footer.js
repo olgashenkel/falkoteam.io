@@ -1,6 +1,5 @@
 const CSS_FOOTER = 'css/style.css';
 const CSS_PATH_FOOTER = 'css/footer.css';
-const CSS_PATH_FOOTER_MOBILE = 'css/media_mobile.css';
 
 class SiteFooter extends HTMLElement {
     constructor() {
@@ -15,8 +14,7 @@ class SiteFooter extends HTMLElement {
     
     <link rel="stylesheet" href="${CSS_FOOTER}">
     <link rel="stylesheet" href="${CSS_PATH_FOOTER}">
-    <link rel="stylesheet" href="${CSS_PATH_FOOTER_MOBILE}" media="screen and (max-width: 425px)">
-
+    
     <footer id="site-footer" class="site-footer">
       <div class="footer-content">
         <a class="copyright" href="/">2026 &copy; Falko Taekwondo Team</a>

@@ -1,6 +1,5 @@
 const CSS_PATH = 'css/style.css';
 const CSS_PATH_HEADER = 'css/header.css';
-const CSS_PATH_HEADER_MOBILE = 'css/media_mobile.css';
 
 
 class SiteHeader extends HTMLElement {
@@ -18,8 +17,7 @@ class SiteHeader extends HTMLElement {
     this.shadowRoot.innerHTML = `
     <link rel="stylesheet" href="${CSS_PATH}">
     <link rel="stylesheet" href="${CSS_PATH_HEADER}">
-    <link rel="stylesheet" href="${CSS_PATH_HEADER_MOBILE}" media="screen and (max-width: 425px)">
-
+    
     <header id="header" class="header">
       <div class="header-menu" id="navbar">
         <div class="header-menu__navbar left">

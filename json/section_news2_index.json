@@ -1,0 +1,23 @@
+[
+  {
+    "url": "#",
+    "image": "image/content/new2_content/1.jpg",
+    "alt": "Новость 1",
+    "title": "Заголовок новости 1",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new2_content/2.jpg",
+    "alt": "Новость 2",
+    "title": "Заголовок новости 2",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  },
+  {
+    "url": "#",
+    "image": "image/content/new2_content/3.jpg",
+    "alt": "Новость 3",
+    "title": "Заголовок новости 3",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+  }
+]
