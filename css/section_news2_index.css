@@ -107,13 +107,13 @@
 /* Адаптивность */
 @media (max-width: 1150px) {
   .news2-grid {
-    grid-template-columns: 400px;
+    grid-template-columns: 310px;
   }
   .news2-card {
-    height: 450px;
+    height: 360px;
   }
   .news2-card__content {
-    padding: 15px 15px 35px 15px;
+    padding: 10px 10px 25px 10px;
   }
 }
 /* --- АНИМАЦИЯ ДЛЯ ТЕЛЕФОНОВ (Через класс .active) --- */

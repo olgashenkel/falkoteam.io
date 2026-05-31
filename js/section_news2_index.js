@@ -59,14 +59,27 @@ function initMobileScrollAnimation() {
 }
 
 
-// Валидация URL для защиты от javascript: и vbscript:
+
+// Валидация URL для защиты от XSS через javascript: и vbscript:
 function safeURL2(url) {
     if (!url) return '#';
-    const trimmed = url.trim().toLowerCase();
-    if (trimmed.startsWith('javascript:') || trimmed.startsWith('vbscript:')) {
-        return '#';
+    
+    const trimmedUrl = url.trim();
+    
+    // Разрешаем только относительные пути или безопасные веб-протоколы (http, https)
+    // Это полностью исключает javascript:, vbscript:, data: и другие опасные схемы
+    const isSafeScheme = /^(https?:\/\/|\/|\.\/)/i.test(trimmedUrl);
+    
+    // Если это не внешняя ссылка http/https и не относительный путь, проверяем на опасные схемы
+    if (!isSafeScheme) {
+        // Очищаем строку от невидимых управляющих символов (ASCII 0-32), которые могут использовать для обхода
+        const sanitizedUrl = trimmedUrl.replace(/[\x00-\x20]/g, '').toLowerCase();
+        if (/^(javascript|vbscript|data):/.test(sanitizedUrl)) {
+            return '#';
+        }
     }
-    return url;
+    
+    return trimmedUrl;
 }
 
 

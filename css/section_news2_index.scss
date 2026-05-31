@@ -118,14 +118,14 @@
 @media (max-width: 1150px) {
   .news2 {
     &-grid {
-      grid-template-columns: 400px;
+      grid-template-columns: 310px;
     }
 
     &-card {
-      height: 450px;
+      height: 360px;
 
       &__content {
-        padding: 15px 15px 35px 15px;
+        padding: 10px 10px 25px 10px;
       }
     }
   }

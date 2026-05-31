@@ -37,18 +37,22 @@ function escapeHTML(str) {
 function safeURL(url) {
     if (!url) return '#';
     
-    // Декодируем URL на случай, если спецсимволы замаскированы
-    const decodedUrl = url.trim().toLowerCase();
+    const trimmedUrl = url.trim();
     
-    // Регулярное выражение ищет javascript: или vbscript: в самом начале строки,
-    // игнорируя возможные пробельные символы внутри схемы (например, java\tscript:)
-    const dangerousProtocolRegex = /^(javascript|vbscript)\s*:/;
+    // Разрешаем только относительные пути или безопасные веб-протоколы (http, https)
+    // Это полностью исключает javascript:, vbscript:, data: и другие опасные схемы
+    const isSafeScheme = /^(https?:\/\/|\/|\.\/)/i.test(trimmedUrl);
     
-    if (dangerousProtocolRegex.test(decodedUrl)) {
-        return '#';
+    // Если это не внешняя ссылка http/https и не относительный путь, проверяем на опасные схемы
+    if (!isSafeScheme) {
+        // Очищаем строку от невидимых управляющих символов (ASCII 0-32), которые могут использовать для обхода
+        const sanitizedUrl = trimmedUrl.replace(/[\x00-\x20]/g, '').toLowerCase();
+        if (/^(javascript|vbscript|data):/.test(sanitizedUrl)) {
+            return '#';
+        }
     }
     
-    return url;
+    return trimmedUrl;
 }
 
 // Функция отрисовки карточек в DOM
