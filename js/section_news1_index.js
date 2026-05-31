@@ -34,7 +34,7 @@ function escapeHTML(str) {
 }
 
 // Валидация URL для защиты от XSS через javascript: и vbscript:
-function safeURL2(url) {
+function safeURL(url) {
     if (!url) return '#';
     
     // Декодируем URL на случай, если спецсимволы замаскированы
