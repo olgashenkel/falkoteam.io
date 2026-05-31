@@ -1,49 +1,11 @@
 const NEWS2_DATA_PATH = 'json/section_news2_index.json'; 
 
-// Глобальная переменная для хранения экземпляра наблюдателя
-let news2Observer = null;
-
-// Экранирование HTML-символов 
-function escapeHTML(str) {
-    if (!str) return '';
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;'); 
-}
-
-// Валидация URL на стороне клиента 
-function sanitizeURL(url) {
-    if (!url) return '#';
-    const trimmed = url.trim();
-    
-    // Блокируем протокол javascript и ссылки вида //javascript:
-    if (/^(javascript|data|vbscript):/i.test(trimmed) || /^\/\/+javascript/i.test(trimmed)) {
-        return '#';
-    }
-
-    if ((trimmed.startsWith('/') && !trimmed.startsWith('//')) || trimmed.startsWith('.')) {
-        return trimmed;
-    }
-
-    try {
-        const parsed = new URL(trimmed, window.location.origin);
-        if (['http:', 'https:'].includes(parsed.protocol)) { 
-            return parsed.href;
-        }
-        return '#';
-    } catch (e) {
-        return '#'; 
-    }
-}
-
 // Асинхронная функция для загрузки JSON-файла
 async function loadNews2Data() {
     const grid = document.getElementById('news2-grid'); 
     if (!grid) return;
 
+    // Включаем обновленный индикатор загрузки
     grid.innerHTML = '<div class="news2-spinner">Загрузка...</div>';
 
     try {
@@ -61,75 +23,89 @@ async function loadNews2Data() {
     }
 }
 
-// Инициализация Intersection Observer
-function initMobileScrollAnimation() {
-    if (news2Observer) {
-        news2Observer.disconnect();
-    }
+// Функция для защиты от XSS 
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;'); 
+}
 
+// Функция инициализации Intersection Observer для мобильных устройств
+function initMobileScrollAnimation() {
     const cards = document.querySelectorAll('.news2-card'); 
     if (!cards.length) return;
 
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.4 
+        threshold: 0.35 // Срабатывает, когда 35% карточки появилось на экране смартфона
     };
 
-    news2Observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                news2Observer.unobserve(entry.target);
+            } else {
+                entry.target.classList.remove('active');
             }
         });
     }, observerOptions);
 
-    cards.forEach(card => news2Observer.observe(card));
+    cards.forEach(card => observer.observe(card));
 }
 
-// Отрисовка карточек
+
+// Валидация URL для защиты от javascript: и vbscript:
+function safeURL2(url) {
+    if (!url) return '#';
+    const trimmed = url.trim().toLowerCase();
+    if (trimmed.startsWith('javascript:') || trimmed.startsWith('vbscript:')) {
+        return '#';
+    }
+    return url;
+}
+
+
 function renderNews2Short(news2Items, grid) {
     if (!Array.isArray(news2Items) || news2Items.length === 0) {
         grid.innerHTML = '<p class="news2-empty">Новости временно недоступны.</p>';
         return;
     }
 
-    const htmlContent = news2Items.map(item => {
-        const url = escapeHTML(sanitizeURL(item.url));
-        const image = escapeHTML(sanitizeURL(item.image));
+    const htmlContent2 = news2Items.map(item => {
+        const safeItem2 = item || {}; 
+        const link2 = safeURL2(safeItem2.url);
         
-        const title = escapeHTML(item.title || 'Без названия');
-        const alt = escapeHTML(item.alt || title);
-        const text = escapeHTML(item.text || '');
-
-        const imageTag = (image !== '#') 
-            ? `<img src="${image}" alt="${alt}" class="news2-card__image" loading="lazy">` 
-            : '';
-
         return `
-            <a href="${url}" class="news2-card" aria-label="${alt}">
-              <div class="news2-card__image-wrap">
-                ${imageTag}
-              </div>
-              <div class="news2-card__content">
-                <div class="news2-card__header">
-                  <h3 class="news2-card__title">${title}</h3>
-                </div>
-                <p class="news2-card__text">${text}</p>
-              </div>
-            </a>
+        <a href="${escapeHTML(link2)}" class="news2-card" rel="noopener noreferrer">
+          <div class="news2-card__image-wrap">
+            <img src="${escapeHTML(safeItem2.image || '')}" alt="${escapeHTML(safeItem2.alt || '')}" class="news2-card__image" loading="lazy">
+          </div>
+          <div class="news2-card__content">
+            <div class="news2-card__header">
+              <h3 class="news2-card__title">${escapeHTML(safeItem2.title || 'Без названия')}</h3>
+            </div>
+            <p class="news2-card__text">${escapeHTML(safeItem2.text || '')}</p>
+          </div>
+        </a>
         `;
     }).join('');
 
-    grid.innerHTML = htmlContent;
-
-    requestAnimationFrame(initMobileScrollAnimation);
+    grid.innerHTML = htmlContent2;
+    // Включаем слежку за скроллом на смартфонах
+    initMobileScrollAnimation();
+    
 }
 
-// Запуск процесса
+
+// Запуск при полной загрузке DOM
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', loadNews2Data);
 } else {
     loadNews2Data();
 }
+

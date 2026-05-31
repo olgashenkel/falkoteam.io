@@ -1,4 +1,4 @@
-const NEWS1_DATA_PATH = 'json/section_news1_index.json'; 
+const NEWS1_DATA_PATH = 'json/section_news1_index.json';
 
 // Асинхронная функция для загрузки JSON-файла
 async function loadNews1Data() {
@@ -9,11 +9,11 @@ async function loadNews1Data() {
 
     try {
         const response = await fetch(NEWS1_DATA_PATH);
-        
+
         if (!response.ok) {
             throw new Error(`Ошибка загрузки: ${response.status}`);
         }
-        
+
         const news1Items = await response.json();
         renderNews1Short(news1Items, grid);
     } catch (error) {
@@ -30,16 +30,24 @@ function escapeHTML(str) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;'); // ИСПРАВЛЕНО: синтаксис и замена на безопасный код
+        .replace(/'/g, '&#39;');
 }
 
-// Валидация URL для защиты от javascript: и vbscript:
-function safeURL(url) {
+// Валидация URL для защиты от XSS через javascript: и vbscript:
+function safeURL2(url) {
     if (!url) return '#';
-    const trimmed = url.trim().toLowerCase();
-    if (trimmed.startsWith('javascript:') || trimmed.startsWith('vbscript:')) {
+    
+    // Декодируем URL на случай, если спецсимволы замаскированы
+    const decodedUrl = url.trim().toLowerCase();
+    
+    // Регулярное выражение ищет javascript: или vbscript: в самом начале строки,
+    // игнорируя возможные пробельные символы внутри схемы (например, java\tscript:)
+    const dangerousProtocolRegex = /^(javascript|vbscript)\s*:/;
+    
+    if (dangerousProtocolRegex.test(decodedUrl)) {
         return '#';
     }
+    
     return url;
 }
 
@@ -51,9 +59,9 @@ function renderNews1Short(news1Items, grid) {
     }
 
     const htmlContent = news1Items.map(item => {
-        const safeItem = item || {}; 
+        const safeItem = item || {};
         const link = safeURL(safeItem.url);
-        
+
         return `
         <a href="${escapeHTML(link)}" class="news1-card" rel="noopener noreferrer">
           <div class="news1-card__image-wrap">
