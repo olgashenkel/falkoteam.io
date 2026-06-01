@@ -56,7 +56,8 @@ class SiteHeader extends HTMLElement {
                 <li><a href="#">О тхэквондо (-)</a></li>
                 <li><a href="#">Достижения (-)</a></li>
                 <li><a href="#">Расписание, адреса залов (-)</a></li>
-                <li><a href="contacts.html">Контакты и расписание (+)</a></li>
+                <li><a href="contacts.html">Контакты и расписание (+)</a></li>                
+                <li><a href="flashcards.html">Интерактивные тренажеры??? (-)</a></li>
               </ul>
             </nav>
             <div class="header-menu__burger_menu-overlay"></div>
