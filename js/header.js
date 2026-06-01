@@ -22,7 +22,7 @@ class SiteHeader extends HTMLElement {
       <div class="header-menu" id="navbar">
         <div class="header-menu__navbar left">
           <div>
-            <a class="header-menu__logo" href="#">
+            <a class="header-menu__logo" href="index.html">
               <picture>
                 <source media="(max-width: 425px)" srcset="image/header/title_header_mobile.png">
                 <img class="header-menu__imglogo" src="image/header/title_header.png" alt="Falko Taekwondo Team">
@@ -51,12 +51,12 @@ class SiteHeader extends HTMLElement {
 
             <nav class="header-menu__burger_side-menu">
               <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="#">Новости</a></li>
-                <li><a href="#">О тхэквондо</a></li>
-                <li><a href="#">Достижения</a></li>
-                <li><a href="#">Расписание, адреса залов</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="index.html">Главная (+)</a></li>
+                <li><a href="#">Новости (-)</a></li>
+                <li><a href="#">О тхэквондо (-)</a></li>
+                <li><a href="#">Достижения (-)</a></li>
+                <li><a href="#">Расписание, адреса залов (-)</a></li>
+                <li><a href="contacts.html">Контакты и расписание (+)</a></li>
               </ul>
             </nav>
             <div class="header-menu__burger_menu-overlay"></div>

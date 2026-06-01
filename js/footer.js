@@ -17,7 +17,7 @@ class SiteFooter extends HTMLElement {
     
     <footer id="site-footer" class="site-footer">
       <div class="footer-content">
-        <a class="copyright" href="/">2026 &copy; Falko Taekwondo Team</a>
+        <a class="copyright" href="index.html">2026 &copy; Falko Taekwondo Team</a>
         
         <!-- Кнопки связи и соцсети -->
         <ul class="social-links">

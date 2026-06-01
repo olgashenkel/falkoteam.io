@@ -21,6 +21,21 @@ body {
     color: #333;
 }
 
+/* Заставляем блок контента растягиваться, заполняя пустоту */
+.main-content{
+    flex: 1 0 auto; 
+}
+
+/* Разделительная черта на страницах сайта */
+.gradient-line {
+    border: none;
+    height: 1px;
+    width: 50%;
+    background-image: linear-gradient(to right, transparent, #636363, transparent);
+    margin: 0 auto;
+}
+
+
 a {
     text-decoration: none;
     color: #727272;
@@ -28,7 +43,7 @@ a {
 
 h1 {
     font-family: 'Lato', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     font-style: normal;
     font-size: clamp(18px, 3vw, 24px);
     line-height: 1.35;
@@ -38,7 +53,7 @@ h1 {
 
 h2 {
     font-family: 'Lato', sans-serif;
-    font-weight: 600;
+    font-weight: 500;
     font-size: clamp(16px, 3vw, 22px);
     line-height: 1.35;
     text-align: center;
@@ -47,7 +62,7 @@ h2 {
 
 h3 {
     font-family: 'Lato', sans-serif;
-    font-weight: 600;
+    font-weight: 400;
     font-size: clamp(16px, 3vw, 20px);
     line-height: 1.1;
     text-align: center;
