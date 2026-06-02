@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивная тренировка | Falko Team</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/training.css">
+    <link rel="stylesheet" href="css/button_up.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+
+    <link rel="shortcut icon" href="image/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="image/favicon/apple-touch-icon.png">
+    <link rel="icon" href="image/favicon/favicon.png" sizes="32x32">
+    <link rel="icon" href="image/favicon/favicon.png" sizes="16x16">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+    
+    <script src="js/header.js" defer></script>
+    <script src="js/button_up.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    <script src="js/training.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Автоматический кастомный хедер -->
+    <site-header></site-header>
+
+    <!-- <main class="training-main"> -->
+    <main class="main-content">
+        <div class="container">
+            <header class="page-title">
+                <h1>Интерактивная тренировка</h1>
+                <p>Проверь свои теоретические знания и практические навыки судейства прямо на платформе</p>
+            </header>
+
+            <!-- Переключатель вкладок (Tabs) -->
+            <div class="tabs-nav">
+                <button class="tab-btn active" data-tab="tab-zones">🎯 Зоны атак и баллы</button>
+                <button class="tab-btn" data-tab="tab-terms">🗣️ Команды тренера</button>
+            </div>
+
+            <!-- СОДЕРЖИМОЕ ВКЛАДОК -->
+            <div class="tabs-content">
+
+                <!-- ТРЕНАЖЕР 1: ЗОНЫ АТАК -->
+                <div class="tab-panel active" id="tab-zones">
+                    <div class="grid-trainer">
+                        <div class="dummy-wrapper">
+                            <div class="target-dummy">
+                                <svg xmlns="http://w3.org" viewBox="0 0 400 600" class="tkd-svg-map">
+                                    <!-- Базовое тело атлета -->
+                                    <g class="base-silhouette">
+                                        <path
+                                            d="M175,130 Q160,110 165,70 Q170,40 200,40 Q230,40 235,70 Q240,110 225,130 L220,150 L180,150 Z" />
+                                        <path
+                                            d="M180,150 L220,150 L260,170 Q300,190 310,230 L300,280 L270,270 L280,220 L250,180 L150,180 L120,220 L130,270 L100,280 Q100,190 140,170 Z" />
+                                        <path d="M145,310 L255,310 L270,390 L130,390 Z" />
+                                        <path
+                                            d="M130,390 L175,390 L165,520 Q160,570 140,570 L120,570 Q115,550 120,510 Z" />
+                                        <path
+                                            d="M225,390 L270,390 L280,510 Q285,550 280,570 L260,570 Q240,570 235,520 Z" />
+                                    </g>
+
+                                    <!-- ИНТЕРАКТИВНЫЕ СЕКТОРА (Зачетные зоны) -->
+                                    <!-- Голова / Шлем -->
+                                    <path id="zone-helmet" class="hit-zone zone-head"
+                                        d="M168,65 Q170,35 200,35 Q230,35 232,65 Q238,95 225,115 Q220,122 200,122 Q180,122 175,115 Q162,95 168,65 Z"
+                                        data-zone="head" />
+
+                                    <!-- Корпус / Жилет -->
+                                    <path id="zone-hogu" class="hit-zone zone-torso"
+                                        d="M155,185 L245,185 Q265,220 260,260 L250,310 L150,310 L140,260 Q135,220 155,185 Z"
+                                        data-zone="torso" />
+
+                                    <!-- Запрещенная зона (Ниже пояса/Ноги) -->
+                                    <path id="zone-legs" class="hit-zone zone-illegal"
+                                        d="M130,315 L270,315 L270,390 L235,520 L260,570 L280,570 L270,390 L130,390 L120,570 L140,570 L165,520 L130,390 Z"
+                                        data-zone="illegal" />
+
+                                    <!-- Декоративные линии (Пояс и шея) -->
+                                    <g class="line-art">
+                                        <path d="M150,310 L250,310" />
+                                        <path d="M175,115 L225,115" />
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+
+
+                        <div class="info-wrapper">
+                            <h3>Анатомия зачетных зон</h3>
+                            <p class="hint-text">Нажмите на цветовую часть экипировки бойца, чтобы изучить
+                                регламент начисления баллов.</p>
+                            <div id="zone-info-box" class="info-card">
+                                <div class="empty-state">Ожидание выбора зоны...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ТРЕНАЖЕР 2: СОПОСТАВЛЕНИЕ ТЕРМИНОВ -->
+                <div class="tab-panel" id="tab-terms">
+                    <div class="matching-wrapper">
+                        <h3>Собери базовые корейские команды и жесты</h3>
+                        <p class="hint-text">Соедини корейский термин с его правильным значением. Нажмите на слово
+                            слева, а затем на перевод справа.</p>
+
+                        <div class="game-board">
+                            <div class="column" id="korean-column"></div>
+                            <div class="column" id="russian-column"></div>
+                        </div>
+
+                        <!-- ИСПРАВЛЕНО: Оставлен только один уникальный ID для вывода статуса игры -->
+                        <div id="game-status" class="game-status"></div>
+
+                        <div id="restart-wrapper" style="display: none;">
+                            <!-- Сама кнопка -->
+                            <button id="restart-btn">Начать сначала</button>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- /tabs-content -->
+        </div>
+    </main>
+
+    <scroll-to-top></scroll-to-top>
+
+    <site-footer></site-footer>
+
+</body>
+
+</html>

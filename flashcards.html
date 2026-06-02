@@ -4,31 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Интерактивная тренировка | Falko Team</title>
+
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/button_up.css">
     <link rel="stylesheet" href="css/flashcards.css">
 
+
+
+  <link rel="shortcut icon" href="image/favicon/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="image/favicon/apple-touch-icon.png">
+  <link rel="icon" href="image/favicon/favicon.png" sizes="32x32">
+  <link rel="icon" href="image/favicon/favicon.png" sizes="16x16">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+
+
+    <script src="js/header.js" defer></script>
+    <script src="js/button_up.js" defer></script>
+    <script src="js/footer.js" defer></script>
     <script src="js/flashcards.js" defer></script>
 </head>
 
 <body>
+    <site-header></site-header>
 
-    <div class="card-container">
-        <div class="flashcard" onclick="flipCard(this)">
-            <!-- Лицевая сторона (Корейский термин) -->
-            <div class="card-side front">
-                <h3>차렷</h3>
-                <p>(Charyeot)</p>
-                <span class="hint">Нажми, чтобы узнать перевод</span>
-            </div>
-            <!-- Обратная сторона (Русский перевод) -->
-            <div class="card-side back">
-                <h3>«Внимание!»</h3>
-                <p>Команда перед началом приветствия и выполнения упражнений.</p>
+    <main class="main-content">
+        <section class="section-flashcards">
+            
+        <div class="card-container">
+            <div class="flashcard" onclick="flipCard(this)">
+                <!-- Лицевая сторона (Корейский термин) -->
+                <div class="card-side front">
+                    <h3>차렷</h3>
+                    <p>(Charyeot)</p>
+                    <span class="hint">Нажми, чтобы узнать перевод</span>
+                </div>
+                <!-- Обратная сторона (Русский перевод) -->
+                <div class="card-side back">
+                    <h3>«Внимание!»</h3>
+                    <p>Команда перед началом приветствия и выполнения упражнений.</p>
+                </div>
             </div>
         </div>
-    </div>
 
 
+
+
+        </section>
+
+    </main>
+    <!-- Кнопка Наверх -->
+    <scroll-to-top></scroll-to-top>
+
+
+    <site-footer></site-footer>
 
 </body>
 

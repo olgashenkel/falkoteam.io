@@ -55,9 +55,16 @@ class SiteHeader extends HTMLElement {
                 <li><a href="#">Новости (-)</a></li>
                 <li><a href="#">О тхэквондо (-)</a></li>
                 <li><a href="#">Достижения (-)</a></li>
-                <li><a href="#">Расписание, адреса залов (-)</a></li>
-                <li><a href="contacts.html">Контакты и расписание (+)</a></li>                
-                <li><a href="flashcards.html">Интерактивные тренажеры??? (-)</a></li>
+                <li><a href="contacts.html">Контакты и расписание (+)</a></li>     
+
+                <li style="color: #727272; display: block; padding: 8px 10px; transition: background 0.2s; font-size: clamp(12px, 3vw, 16px);">Интерактивные тренировки:
+                <ul>
+                  <li><a href="training.html">> Зоны атак и команды тренера (+)</a></li>
+                  <li><a href="flashcards.html">> Игра: учим корейские слова(+-)</a></li>
+                  <li><a href="#">> Тренировка-3(-)</a></li>
+                </ul>
+              </li>
+                
               </ul>
             </nav>
             <div class="header-menu__burger_menu-overlay"></div>

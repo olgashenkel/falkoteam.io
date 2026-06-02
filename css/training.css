@@ -1,0 +1,336 @@
+@charset "UTF-8";
+:root {
+  --primary-blue: #0056b3;
+  --accent-red: #e63946;
+  --dark-bg: #1d1e2c;
+  --text-dark: #2b2d42;
+  --gray-light: #f8f9fa;
+}
+
+.main-content {
+  padding: 50px 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Навигация вкладок */
+.tabs-nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.tab-btn {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #fff;
+  border: 2px solid #dee2e6;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background-color: var(--dark-bg);
+  color: #fff;
+  border-color: var(--dark-bg);
+}
+
+/* Управление показом вкладок */
+.tab-panel {
+  display: none;
+  background: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* Стили тренажера 1 (Зоны атаки) */
+.grid-trainer {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.dummy-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Обновленный контейнер для SVG-силуэта */
+.target-dummy {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  /* Оптимальная ширина бойца на экране */
+  margin: 0 auto;
+  overflow: visible;
+}
+
+.tkd-svg-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Стилизация базовых элементов спортсмена */
+.base-silhouette {
+  fill: var(--dark-bg);
+  opacity: 0.15;
+  /* Легкий контур рук/ног вне экипировки */
+}
+
+.line-art {
+  stroke: #ffffff;
+  stroke-width: 2;
+  fill: none;
+  opacity: 0.4;
+  pointer-events: none;
+  /* Линии не мешают кликам */
+}
+
+/* Интерактивные зоны */
+.hit-zone {
+  cursor: pointer;
+  transition: transform 0.2s ease, fill 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Эффект наведения (Hover) на зоны */
+.hit-zone:hover {
+  opacity: 0.85;
+}
+
+/* Цвета зон, привязанные к переменным Falko Team */
+.zone-head {
+  fill: var(--primary-blue);
+  opacity: 0.6;
+}
+
+.zone-torso {
+  fill: var(--accent-red);
+  opacity: 0.7;
+}
+
+.zone-illegal {
+  fill: #ffb703;
+  /* Нейтральный серый по умолчанию */
+  opacity: 0.2;
+}
+
+.zone-illegal:hover {
+  fill: #ffb703;
+  /* Оранжевый цвет предупреждения при наведении */
+  opacity: 0.4;
+}
+
+/* Стили вывода информации внутри карточки */
+.info-card {
+  background: var(--gray-light);
+  border-left: 6px solid #dee2e6;
+  padding: 25px;
+  border-radius: 8px;
+  min-height: 180px;
+  font-family: "Lato", sans-serif;
+  transition: all 0.3s;
+}
+
+.info-card h4 {
+  font-size: 20px;
+  color: var(--dark-bg);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-card li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.info-card strong {
+  color: var(--primary-blue);
+}
+
+.info-card .penalty-text strong {
+  color: var(--accent-red);
+}
+
+.hint-text {
+  font-family: "Lato", sans-serif;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.empty-state {
+  color: #adb5bd;
+  text-align: center;
+  padding-top: 50px;
+  font-style: italic;
+}
+
+/* Стили тренажера 2 (Сопоставление пар) */
+.matching-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.game-board {
+  display: flex;
+  gap: 30px;
+}
+
+.column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.game-btn {
+  padding: 15px;
+  background: #fff;
+  border: 2px solid #e9ecef;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.game-btn:hover:not(.matched) {
+  border-color: var(--primary-blue);
+  background-color: #f1f7ff;
+}
+
+.game-btn.selected {
+  background: #ffb703;
+  border-color: #fb8500;
+  color: #fff;
+}
+
+.game-btn.matched {
+  background: #d4edda;
+  border-color: #c3e6cb;
+  color: #155724;
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.game-status {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  color: #155724;
+}
+
+/* Состояние ошибки (Красная подсветка + Тряска) */
+.game-btn.error {
+  background-color: #f8d7da !important;
+  border-color: #f5c6cb !important;
+  color: #721c24 !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Пульсация, если пользователь нажал на перевод, не выбрав термин */
+.game-btn.error-pulse {
+  animation: shake 0.4s ease-in-out;
+  border-color: #e63946 !important;
+}
+
+/* ДОБАВЛЕНО: Стилизация контейнера и кнопки перезапуска игры */
+#restart-wrapper {
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0;
+  /* Изначально скрыто для анимации fadeIn */
+}
+
+#restart-btn {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--primary-blue);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+  transition: all 0.2s ease;
+}
+
+#restart-btn:hover {
+  background-color: #004085;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
+}
+
+#restart-btn:active {
+  transform: translateY(0);
+}
+
+/* Эффект плавного появления финального текста */
+.game-status.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+#restart-wrapper.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* АНИМАЦИИ */
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-6px);
+  }
+  40%, 80% {
+    transform: translateX(6px);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Адаптивность */
+@media (max-width: 768px) {
+  .grid-trainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .tab-panel {
+    padding: 20px;
+  }
+}/*# sourceMappingURL=training.css.map */

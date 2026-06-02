@@ -1,23 +1,23 @@
 [
   {
-    "url": "#",
-    "image": "image/content/new2_content/1.jpg",
-    "alt": "Новость 1",
-    "title": "Заголовок новости 1",
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+    "url": "training.html",
+    "image": "image/content/new2_content/silhouette.jpg",
+    "alt": "Интерактивные тренировки",
+    "title": "Зоны атак и команды тренера",
+    "text": "Проверь свои теоретические знания и практические навыки судейства прямо на платформе"
+  },
+  {
+    "url": "flashcards.html",
+    "image": "image/content/new2_content/3.jpg",
+    "alt": "Интерактивные тренировки",
+    "title": "Игра: учим корейские слова",
+    "text": "Пройди все карточки и проверь, готов ли ты получить черный пояс по знанию терминов тхэквондо!"
   },
   {
     "url": "#",
     "image": "image/content/new2_content/2.jpg",
-    "alt": "Новость 2",
-    "title": "Заголовок новости 2",
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
-  },
-  {
-    "url": "#",
-    "image": "image/content/new2_content/3.jpg",
-    "alt": "Новость 3",
-    "title": "Заголовок новости 3",
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus."
+    "alt": "Интерактивные тренировки",
+    "title": "Заголовок",
+    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
   }
 ]

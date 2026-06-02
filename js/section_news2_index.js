@@ -18,8 +18,8 @@ async function loadNews2Data() {
         const news2Items = await response.json();
         renderNews2Short(news2Items, grid);
     } catch (error) {
-        console.error('Не удалось загрузить новости:', error);
-        grid.innerHTML = '<p class="news2-empty">Не удалось загрузить новости.</p>';
+        console.error('Не удалось загрузить контент:', error);
+        grid.innerHTML = '<p class="news2-empty">Не удалось загрузить контент.</p>';
     }
 }
 
@@ -85,7 +85,7 @@ function safeURL2(url) {
 
 function renderNews2Short(news2Items, grid) {
     if (!Array.isArray(news2Items) || news2Items.length === 0) {
-        grid.innerHTML = '<p class="news2-empty">Новости временно недоступны.</p>';
+        grid.innerHTML = '<p class="news2-empty">Контент временно недоступен.</p>';
         return;
     }
 
@@ -102,7 +102,7 @@ function renderNews2Short(news2Items, grid) {
             <div class="news2-card__header">
               <h3 class="news2-card__title">${escapeHTML(safeItem2.title || 'Без названия')}</h3>
             </div>
-            <p class="news2-card__text">${escapeHTML(safeItem2.text || '')}</p>
+            <div class="news2-card__text">${escapeHTML(safeItem2.text || '')}</div>
           </div>
         </a>
         `;

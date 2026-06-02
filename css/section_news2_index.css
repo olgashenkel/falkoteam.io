@@ -6,9 +6,6 @@
   gap: 20px;
   padding: 20px;
 }
-.news2 {
-  /* Стили карточки-ссылки */
-}
 .news2-card {
   position: relative;
   height: 400px;
@@ -17,7 +14,6 @@
   cursor: pointer;
   display: block;
   text-decoration: none;
-  /* Темное затемнение перенесено на z-index выше картинки, но под текстом */
 }
 .news2-card::before {
   content: "";
@@ -26,7 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.1) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 100%);
   z-index: 2;
 }
 .news2-card__image {
@@ -37,7 +33,6 @@
   -o-object-position: center;
      object-position: center;
   transition: transform 0.5s ease;
-  /* Плавность для эффекта увеличения */
 }
 .news2-card__image-wrap {
   position: absolute;
@@ -52,32 +47,29 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 15px;
+  padding: 20px;
   z-index: 3;
   box-sizing: border-box;
-  transform: translateY(100px);
+  /* Динамический сдвиг: прячем только текст, оставляя заголовок видимым */
+  transform: translateY(calc(100% - 70px));
   transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .news2-card__title {
   color: #fff;
   font-size: 1.3rem;
   margin: 0 0 15px 0;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   text-align: left;
   position: relative;
-  /* Нижняя линия под заголовком */
 }
 .news2-card__title::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 10px;
+  bottom: 0;
   width: 100%;
   height: 1px;
   background-color: rgba(255, 255, 255, 0.4);
-}
-.news2-card {
-  /* Скрытый текст новости */
 }
 .news2-card__text {
   color: #e0e0e0;
@@ -88,8 +80,8 @@
   transition: opacity 0.3s ease;
 }
 
-/* --- АНИМАЦИЯ ДЛЯ ПК (При наведении мыши) --- */
-@media (min-width: 501px) {
+/* --- СТИЛИ ДЛЯ ХОВЕРА (ПК) И КЛАССА ACTIVE (МОБИЛЬНЫЕ) --- */
+@media (min-width: 1025px) {
   .news2-card:hover .news2-card__content {
     transform: translateY(0);
   }
@@ -97,27 +89,11 @@
     opacity: 1;
     transition-delay: 0.1s;
   }
-  .news2-card:hover {
-    /* Опционально: легкое увеличение самой картинки при наведении */
-  }
   .news2-card:hover .news2-card__image {
     transform: scale(1.05);
   }
 }
-/* Адаптивность */
-@media (max-width: 1150px) {
-  .news2-grid {
-    grid-template-columns: 310px;
-  }
-  .news2-card {
-    height: 360px;
-  }
-  .news2-card__content {
-    padding: 10px 10px 25px 10px;
-  }
-}
-/* --- АНИМАЦИЯ ДЛЯ ТЕЛЕФОНОВ (Через класс .active) --- */
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
   .news2-card.active .news2-card__content {
     transform: translateY(0);
   }
@@ -127,5 +103,15 @@
   }
   .news2-card.active .news2-card__image {
     transform: scale(1.05);
+  }
+}
+/* --- АДАПТИВНАЯ СЕТКА И РАЗМЕРЫ --- */
+@media (max-width: 1150px) {
+  .news2-grid {
+    grid-template-columns: 310px;
+    padding: 15px;
+  }
+  .news2-card {
+    height: 380px;
   }
 }/*# sourceMappingURL=section_news2_index.css.map */
