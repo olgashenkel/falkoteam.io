@@ -39,7 +39,6 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .tab-btn.active {
   background-color: var(--dark-bg);
   color: #fff;
@@ -54,7 +53,6 @@
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
-
 .tab-panel.active {
   display: block;
 }
@@ -109,9 +107,8 @@
   cursor: pointer;
   transition: transform 0.2s ease, fill 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
+  /* Эффект наведения (Hover) на зоны */
 }
-
-/* Эффект наведения (Hover) на зоны */
 .hit-zone:hover {
   opacity: 0.85;
 }
@@ -121,18 +118,15 @@
   fill: var(--primary-blue);
   opacity: 0.6;
 }
-
 .zone-torso {
   fill: var(--accent-red);
   opacity: 0.7;
 }
-
 .zone-illegal {
   fill: #ffb703;
   /* Нейтральный серый по умолчанию */
   opacity: 0.2;
 }
-
 .zone-illegal:hover {
   fill: #ffb703;
   /* Оранжевый цвет предупреждения при наведении */
@@ -149,29 +143,24 @@
   font-family: "Lato", sans-serif;
   transition: all 0.3s;
 }
-
 .info-card h4 {
   font-size: 20px;
   color: var(--dark-bg);
   margin-top: 0;
   margin-bottom: 12px;
 }
-
 .info-card ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .info-card li {
   margin-bottom: 8px;
   font-size: 15px;
 }
-
 .info-card strong {
   color: var(--primary-blue);
 }
-
 .info-card .penalty-text strong {
   color: var(--accent-red);
 }
@@ -219,18 +208,15 @@
   transition: all 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
-
 .game-btn:hover:not(.matched) {
   border-color: var(--primary-blue);
   background-color: #f1f7ff;
 }
-
 .game-btn.selected {
   background: #ffb703;
   border-color: #fb8500;
   color: #fff;
 }
-
 .game-btn.matched {
   background: #d4edda;
   border-color: #c3e6cb;
@@ -254,10 +240,9 @@
   border-color: #f5c6cb !important;
   color: #721c24 !important;
   animation: shake 0.5s ease-in-out;
+  /* Пульсация, если пользователь нажал на перевод, не выбрав термин */
 }
-
-/* Пульсация, если пользователь нажал на перевод, не выбрав термин */
-.game-btn.error-pulse {
+.game-btn.error.error-pulse {
   animation: shake 0.4s ease-in-out;
   border-color: #e63946 !important;
 }
@@ -282,13 +267,11 @@
   box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
   transition: all 0.2s ease;
 }
-
 #restart-btn:hover {
   background-color: #004085;
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
 }
-
 #restart-btn:active {
   transform: translateY(0);
 }

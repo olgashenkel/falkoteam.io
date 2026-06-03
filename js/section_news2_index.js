@@ -42,7 +42,7 @@ function initMobileScrollAnimation() {
     const observerOptions = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.35 // Срабатывает, когда 35% карточки появилось на экране смартфона
+        threshold: 0.50 // Срабатывает, когда 50% карточки появилось на экране смартфона
     };
 
     const observer = new IntersectionObserver((entries) => {

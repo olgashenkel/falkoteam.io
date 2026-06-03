@@ -61,7 +61,7 @@ class SiteHeader extends HTMLElement {
                 <ul>
                   <li><a href="training.html">> Зоны атак и команды тренера (+)</a></li>
                   <li><a href="flashcards.html">> Игра: учим корейские слова(+-)</a></li>
-                  <li><a href="#">> Тренировка-3(-)</a></li>
+                  <li><a href="quizwrapper.html">> Тест: Правила судейства (Кёруги)(+)</a></li>
                 </ul>
               </li>
                 

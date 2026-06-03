@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Интерактивная тренировка | Falko Team</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/quizwrapper.css">
+    <link rel="stylesheet" href="css/button_up.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+
+    <link rel="shortcut icon" href="image/favicon/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="image/favicon/apple-touch-icon.png">
+    <link rel="icon" href="image/favicon/favicon.png" sizes="32x32">
+    <link rel="icon" href="image/favicon/favicon.png" sizes="16x16">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+
+    <script src="js/header.js" defer></script>
+    <script src="js/quizwrapper.js" defer></script>
+    <script src="js/button_up.js" defer></script>
+    <script src="js/footer.js" defer></script>
+
+
+</head>
+
+<body>
+    <site-header></site-header>
+
+    <main class="main-content">
+
+        <section class="section-quiz-wrapper">
+            <div class="quiz-wrapper">
+                <h1>Тестирование: Правила судейства (Кёруги)</h1>
+                <p>Проверь свои теоретические знания и практические навыки судейства прямо на платформе</p>
+
+                <div id="quiz-container"></div>
+
+                <button id="submit-btn" onclick="checkAnswers()">Проверить результаты</button>
+                <button id="reset-btn" class="hidden">Пройти тест заново</button>
+                <!-- Окно с результатами (изначально скрыто) -->
+                <div id="result-box" class="hidden"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Кнопка Наверх -->
+    <scroll-to-top></scroll-to-top>
+
+
+    <site-footer></site-footer>
+</body>
+
+</html>

@@ -28,22 +28,25 @@
   margin-bottom: 30px;
 }
 
-.tab-btn {
-  padding: 12px 25px;
-  font-size: 16px;
-  font-weight: 600;
-  background-color: #fff;
-  border: 2px solid #dee2e6;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+.tab {
+  &-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #fff;
+    border: 2px solid #dee2e6;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background-color: var(--dark-bg);
+      color: #fff;
+      border-color: var(--dark-bg);
+    }
+  }
 }
 
-.tab-btn.active {
-  background-color: var(--dark-bg);
-  color: #fff;
-  border-color: var(--dark-bg);
-}
 
 /* Управление показом вкладок */
 .tab-panel {
@@ -52,10 +55,12 @@
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-}
 
-.tab-panel.active {
-  display: block;
+  &.active {
+    display: block;
+  }
+
+
 }
 
 /* Стили тренажера 1 (Зоны атаки) */
@@ -108,34 +113,37 @@
   cursor: pointer;
   transition: transform 0.2s ease, fill 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
-}
 
-/* Эффект наведения (Hover) на зоны */
-.hit-zone:hover {
-  opacity: 0.85;
+  /* Эффект наведения (Hover) на зоны */
+  &:hover {
+    opacity: 0.85;
+  }
 }
 
 /* Цвета зон, привязанные к переменным Falko Team */
-.zone-head {
-  fill: var(--primary-blue);
-  opacity: 0.6;
-}
+.zone {
 
-.zone-torso {
-  fill: var(--accent-red);
-  opacity: 0.7;
-}
+  &-head {
+    fill: var(--primary-blue);
+    opacity: 0.6;
+  }
 
-.zone-illegal {
-  fill: #ffb703;
-  /* Нейтральный серый по умолчанию */
-  opacity: 0.2;
-}
+  &-torso {
+    fill: var(--accent-red);
+    opacity: 0.7;
+  }
 
-.zone-illegal:hover {
-  fill: #ffb703;
-  /* Оранжевый цвет предупреждения при наведении */
-  opacity: 0.4;
+  &-illegal {
+    fill: #ffb703;
+    /* Нейтральный серый по умолчанию */
+    opacity: 0.2;
+
+    &:hover {
+      fill: #ffb703;
+      /* Оранжевый цвет предупреждения при наведении */
+      opacity: 0.4;
+    }
+  }
 }
 
 /* Стили вывода информации внутри карточки */
@@ -147,33 +155,35 @@
   min-height: 180px;
   font-family: 'Lato', sans-serif;
   transition: all 0.3s;
+
+  & h4 {
+    font-size: 20px;
+    color: var(--dark-bg);
+    margin-top: 0;
+    margin-bottom: 12px;
+  }
+
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  & li {
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+
+  & strong {
+    color: var(--primary-blue);
+  }
+
+  & .penalty-text strong {
+    color: var(--accent-red);
+  }
 }
 
-.info-card h4 {
-  font-size: 20px;
-  color: var(--dark-bg);
-  margin-top: 0;
-  margin-bottom: 12px;
-}
 
-.info-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.info-card li {
-  margin-bottom: 8px;
-  font-size: 15px;
-}
-
-.info-card strong {
-  color: var(--primary-blue);
-}
-
-.info-card .penalty-text strong {
-  color: var(--accent-red);
-}
 
 .hint-text {
   font-family: 'Lato', sans-serif;
@@ -217,26 +227,26 @@
   cursor: pointer;
   transition: all 0.2s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-}
 
-.game-btn:hover:not(.matched) {
-  border-color: var(--primary-blue);
-  background-color: #f1f7ff;
-}
+  &:hover:not(.matched) {
+    border-color: var(--primary-blue);
+    background-color: #f1f7ff;
+  }
 
-.game-btn.selected {
-  background: #ffb703;
-  border-color: #fb8500;
-  color: #fff;
-}
+  &.selected {
+    background: #ffb703;
+    border-color: #fb8500;
+    color: #fff;
+  }
 
-.game-btn.matched {
-  background: #d4edda;
-  border-color: #c3e6cb;
-  color: #155724;
-  cursor: default;
-  pointer-events: none;
-  opacity: 0.7;
+  &.matched {
+    background: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.7;
+  }
 }
 
 .game-status {
@@ -253,12 +263,12 @@
   border-color: #f5c6cb !important;
   color: #721c24 !important;
   animation: shake 0.5s ease-in-out;
-}
 
-/* Пульсация, если пользователь нажал на перевод, не выбрав термин */
-.game-btn.error-pulse {
-  animation: shake 0.4s ease-in-out;
-  border-color: #e63946 !important;
+  /* Пульсация, если пользователь нажал на перевод, не выбрав термин */
+  &.error-pulse {
+    animation: shake 0.4s ease-in-out;
+    border-color: #e63946 !important;
+  }
 }
 
 /* ДОБАВЛЕНО: Стилизация контейнера и кнопки перезапуска игры */
@@ -280,16 +290,16 @@
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
   transition: all 0.2s ease;
-}
 
-#restart-btn:hover {
-  background-color: #004085;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
-}
+  &:hover {
+    background-color: #004085;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 86, 179, 0.4);
+  }
 
-#restart-btn:active {
-  transform: translateY(0);
+  &:active {
+    transform: translateY(0);
+  }
 }
 
 /* Эффект плавного появления финального текста */
@@ -339,9 +349,6 @@
     gap: 20px;
   }
 
-  // .game-board {
-  //   flex-direction: column;
-  // }
 
   .tab-panel {
     padding: 20px;

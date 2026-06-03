@@ -8,16 +8,16 @@
   },
   {
     "url": "flashcards.html",
-    "image": "image/content/new2_content/3.jpg",
+    "image": "image/content/new2_content/2.jpg",
     "alt": "Интерактивные тренировки",
     "title": "Игра: учим корейские слова",
     "text": "Пройди все карточки и проверь, готов ли ты получить черный пояс по знанию терминов тхэквондо!"
   },
   {
-    "url": "#",
-    "image": "image/content/new2_content/2.jpg",
+    "url": "quizwrapper.html",
+    "image": "image/content/new2_content/3.jpg",
     "alt": "Интерактивные тренировки",
-    "title": "Заголовок",
-    "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. "
+    "title": "Тест: Правила судейства (Кёруги)",
+    "text": "Проверь свои знания правил тхэквондо Кёруги! Прочитай вопросы и выбери один правильный ответ."
   }
 ]
