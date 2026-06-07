@@ -10,7 +10,7 @@
     "alt": "Новость 1",
     "title": "Заголовок новости 1",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.",
-    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nЗдесь вы можете написать полноценный развернутый текст для первой новости. Благодаря использованию символа переноса строки, текст автоматически разделится на правильные абзацы при открытии на отдельной странице.",
+    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nПолный текст для первой новости. Вы можете добавлять сюда любую информацию о соревнованиях, тренировках или аттестациях по тхэквондо",
     "date": "07.06.2026"
   },
   {
@@ -30,7 +30,7 @@
     "alt": "Новость 3",
     "title": "Заголовок новости 3",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.",
-    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nДетальное описание третьей новости. Структура полностью готова к наполнению реальным контентом.",
+    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nДетальное описание третьей новости.",
     "date": "05.06.2026"
   },
   {
@@ -40,7 +40,7 @@
     "alt": "Новость 4",
     "title": "Заголовок новости 4",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.",
-    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nТекст четвертой новости. Обратите внимание, что если вы оставите поле fullText пустым, скрипт автоматически подставит краткий текст из поля text, чтобы страница не осталась пустой.",
+    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nТекст четвертой новости. Если оставить поле fullText пустым, скрипт автоматически подставит краткий текст из поля text, чтобы страница не осталась пустой.",
     "date": "04.06.2026"
   },
   {
@@ -50,7 +50,7 @@
     "alt": "Новость 5",
     "title": "Заголовок новости 5",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.",
-    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nПолное содержание для пятого информационного блока вашей ленты.",
+    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nПолное содержание для пятого информационного блока ленты.",
     "date": "03.06.2026"
   },
   {
@@ -60,7 +60,7 @@
     "alt": "Новость 6",
     "title": "Заголовок новости 6",
     "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.",
-    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nЗаключительная шестая новость в текущей сетке. Вы можете расширять этот список, просто добавляя новые объекты по аналогии.",
+    "fullText": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis doloribus veniam similique laudantium quibusdam ducimus.\n\nЗаключительная шестая новость в текущей сетке.",
     "date": "01.06.2026"
   }
 ]
