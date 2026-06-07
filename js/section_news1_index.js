@@ -36,13 +36,13 @@ function escapeHTML(str) {
 // Валидация URL для защиты от XSS через javascript: и vbscript:
 function safeURL(url) {
     if (!url) return '#';
-    
+
     const trimmedUrl = url.trim();
-    
+
     // Разрешаем только относительные пути или безопасные веб-протоколы (http, https)
     // Это полностью исключает javascript:, vbscript:, data: и другие опасные схемы
     const isSafeScheme = /^(https?:\/\/|\/|\.\/)/i.test(trimmedUrl);
-    
+
     // Если это не внешняя ссылка http/https и не относительный путь, проверяем на опасные схемы
     if (!isSafeScheme) {
         // Очищаем строку от невидимых управляющих символов (ASCII 0-32), которые могут использовать для обхода
@@ -51,11 +51,12 @@ function safeURL(url) {
             return '#';
         }
     }
-    
+
     return trimmedUrl;
 }
 
-// Функция отрисовки карточек в DOM
+// Функция отрисовки карточек в DOM (с полной защитой от отсутствующих данных)
+
 function renderNews1Short(news1Items, grid) {
     if (!Array.isArray(news1Items) || news1Items.length === 0) {
         grid.innerHTML = '<p class="news1-empty">Новости временно недоступны.</p>';
@@ -64,18 +65,36 @@ function renderNews1Short(news1Items, grid) {
 
     const htmlContent = news1Items.map(item => {
         const safeItem = item || {};
-        const link = safeURL(safeItem.url);
+
+        const rawLink = safeItem.id ? `./article.html?id=${encodeURIComponent(safeItem.id)}` : (safeItem.url || '#');
+        const link = safeURL(rawLink);
+
+        const titleText = safeItem.title ? safeItem.title.trim() : 'Без названия';
+        const bodyText = safeItem.text ? safeItem.text.trim() : '';
+        const altText = safeItem.alt || titleText;
+
+        // ИСПРАВЛЕНИЕ: Универсальное получение картинки для превью на главной
+        let imageSrc = '';
+        if (Array.isArray(safeItem.images) && safeItem.images.length > 0) {
+            // Если это новый формат (массив) — берем самую первую картинку [0]
+            imageSrc = safeItem.images[0]; 
+        } else if (safeItem.image) {
+            // Если это старый формат (одиночная строка) — берем её, чтобы остальные карточки не ломались
+            imageSrc = safeItem.image;
+        }
 
         return `
         <a href="${escapeHTML(link)}" class="news1-card" rel="noopener noreferrer">
+          ${imageSrc ? `
           <div class="news1-card__image-wrap">
-            <img src="${escapeHTML(safeItem.image || '')}" alt="${escapeHTML(safeItem.alt || '')}" class="news1-card__image" loading="lazy">
+            <img src="${escapeHTML(imageSrc)}" alt="${escapeHTML(altText)}" class="news1-card__image" loading="lazy">
           </div>
+          ` : ''}
           <div class="news1-card__content">
             <div class="news1-card__header">
-              <h3 class="news1-card__title">${escapeHTML(safeItem.title || 'Без названия')}</h3>
+              <h3 class="news1-card__title">${escapeHTML(titleText)}</h3>
             </div>
-            <p class="news1-card__text">${escapeHTML(safeItem.text || '')}</p>
+            ${bodyText ? `<p class="news1-card__text">${escapeHTML(bodyText)}</p>` : ''}
           </div>
         </a>
         `;
@@ -83,6 +102,8 @@ function renderNews1Short(news1Items, grid) {
 
     grid.innerHTML = htmlContent;
 }
+
+
 
 // Запуск при полной загрузке DOM
 if (document.readyState === 'loading') {
