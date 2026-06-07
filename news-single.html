@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Новости | FalkoTeam</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/button_up.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="shortcut icon" href="image/favicon/favicon.ico" type="image/x-icon">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+
+
+    <!-- Подключение всех необходимых JS компонентов -->
+    <script src="js/header.js" defer></script>
+    <script src="js/button_up.js" defer></script>
+    <script src="js/footer.js" defer></script>
+    
+    <!-- скрипт для обработки новости и загрузки Giscus -->
+    <script src="js/news_single.js" defer></script>
+</head>
+<body>
+    <site-header></site-header>
+    
+    <main class="main-content" style="background-color: #fafafa; padding: 40px 20px;">
+        <section class="section-index" style="max-width: 900px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+            
+            <span id="single-date" style="color: #888; font-weight: bold; font-family: 'Montserrat', sans-serif;"></span>
+            <h1 id="single-title" style="margin-top: 10px; color: #000; font-family: 'Montserrat', sans-serif;">Загрузка...</h1>
+            
+            <!-- Место под галерею или одну картинку новости -->
+            <div id="single-gallery" style="display: flex; gap: 15px; flex-wrap: wrap; margin: 25px 0;"></div>
+            
+            <!-- Основной текст публикации -->
+            <div id="single-content" style="font-family: 'Lato', sans-serif; font-size: 1.1rem; line-height: 1.7; color: #333; margin-bottom: 40px;"></div>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+            
+            <!-- Изолированный контейнер, куда скрипт сам добавит форму Giscus -->
+            <div class="giscus-comments-wrap">
+                <h2 style="font-family: 'Montserrat', sans-serif; margin-bottom: 20px;">Обсуждение новости</h2>
+                <div class="giscus"></div>
+            </div>
+            
+        </section>
+    </main>
+
+    <scroll-to-top></scroll-to-top>
+    <site-footer></site-footer>
+</body>
+</html>

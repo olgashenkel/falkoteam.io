@@ -1,23 +1,30 @@
 @charset "UTF-8";
-/* Контейнер для создания 3D-пространства */
-.card-container {
-  width: 300px;
-  height: 200px;
-  perspective: 1000px;
-  margin: 20px auto;
+.section-flashcards__header {
+  margin: 60px 0 20px 0;
+  text-align: center;
 }
 
-/* Сама карточка */
+/* Контейнер-сетка для карточек */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+  perspective: 5500px;
+  /* Перенесено для корректного 3D в дочерних элементах */
+}
+
+/* Сама карточка с фиксированным размером */
 .flashcard {
-  width: 100%;
-  height: 100%;
+  width: 300px;
+  height: 200px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
   cursor: pointer;
+  /* Класс переворота */
 }
-
-/* Класс переворота, который будет добавлять JS */
 .flashcard.flipped {
   transform: rotateY(180deg);
 }
@@ -27,7 +34,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Скрывает изнанку при перевороте */
+  backface-visibility: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,15 +49,15 @@
 /* Стиль лицевой стороны */
 .front {
   background-color: #ffffff;
-  border: 2px solid #0056b3; /* Синий цвет тхэквондо */
+  border: 2px solid #333;
   color: #333;
 }
 
 /* Стиль обратной стороны */
 .back {
-  background-color: #e63946; /* Красный цвет тхэквондо */
+  background-color: #e63946;
   color: white;
-  transform: rotateY(180deg); /* Изначально повернута */
+  transform: rotateY(180deg);
 }
 
 .hint {

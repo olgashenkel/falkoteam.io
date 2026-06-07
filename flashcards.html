@@ -9,9 +9,9 @@
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/button_up.css">
     <link rel="stylesheet" href="css/flashcards.css">
+    <link rel="stylesheet" href="css/button_up.css">
+    <link rel="stylesheet" href="css/footer.css">
 
 
 
@@ -39,35 +39,24 @@
 
     <main class="main-content">
         <section class="section-flashcards">
-            
-        <div class="card-container">
-            <div class="flashcard" onclick="flipCard(this)">
-                <!-- Лицевая сторона (Корейский термин) -->
-                <div class="card-side front">
-                    <h3>차렷</h3>
-                    <p>(Charyeot)</p>
-                    <span class="hint">Нажми, чтобы узнать перевод</span>
-                </div>
-                <!-- Обратная сторона (Русский перевод) -->
-                <div class="card-side back">
-                    <h3>«Внимание!»</h3>
-                    <p>Команда перед началом приветствия и выполнения упражнений.</p>
-                </div>
+            <div class="section-flashcards__header">
+                <h1>Интерактивная тренировка</h1>
+                <p>Изучение корейских терминов через игру — лучший способ запомнить команды тренера и подготовиться к аттестации.</p>
+                <p>Попробуйте перевести слова. Нажмите на нужную карточку, чтобы проверить правильность ответа</p>
             </div>
-        </div>
+             
 
-
-
-
+            <!-- Сюда JS будет вставлять карточки -->
+            <div class="card-container" id="cardContainer"></div>
         </section>
-
     </main>
+
     <!-- Кнопка Наверх -->
     <scroll-to-top></scroll-to-top>
-
 
     <site-footer></site-footer>
 
 </body>
+
 
 </html>

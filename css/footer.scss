@@ -65,7 +65,6 @@
 
          &-number {
              transition: color 0.3s ease;
-
          }
 
          &:hover {
@@ -76,7 +75,6 @@
  }
 
  /* 3. ФИРМЕННЫЕ ЦВЕТА ПРИ НАВЕДЕНИИ */
-
  .social-links li:hover .social-icon svg {
      filter: grayscale(0%);
      /* Возвращает фирменный цвет */

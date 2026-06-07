@@ -1,26 +1,23 @@
-/* Скрипт для Главной страницы 
-Выводит первые 6 новостей. Проверяет наличие картинки (ищет в image или в первом элементе массива images), заголовка, текста и даты. Если поле пустое — подставляет заглушку.
+/* Скрипт для страницы Архива
+Идентичен скрипту (section_news1_index.js), но выгружает абсолютно весь список новостей без ограничения в 6 штук. 
 */
 
 const NEWS1_DATA_PATH = 'json/section_news1_index.json';
-const DEFAULT_IMAGE = 'image/content/new1_content/default.jpg'; // Путь к картинке-заглушке
+const DEFAULT_IMAGE = 'image/content/new1_content/default.jpg';
 
-async function loadNews1Data() {
-    const grid = document.getElementById('news1-grid');
+async function loadArchiveData() {
+    const grid = document.getElementById('archive-news-grid');
     if (!grid) return;
-    grid.innerHTML = '<div class="news1-spinner">Загрузка...</div>';
+    grid.innerHTML = '<div class="news1-spinner">Загрузка архива...</div>';
     
     try {
         const response = await fetch(NEWS1_DATA_PATH);
-        if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
-        const news1Items = await response.json();
-        
-        // Ограничиваем вывод первыми 6 новостями
-        const shortNewsItems = Array.isArray(news1Items) ? news1Items.slice(0, 6) : [];
-        renderNews1Short(shortNewsItems, grid);
+        if (!response.ok) throw new Error(`Ошибка: ${response.status}`);
+        const newsItems = await response.json();
+        renderArchive(newsItems, grid);
     } catch (error) {
-        console.error('Не удалось загрузить новости:', error);
-        grid.innerHTML = '<p class="news1-empty">Не удалось загрузить новости.</p>';
+        console.error(error);
+        grid.innerHTML = '<p class="news1-empty">Не удалось загрузить архив новостей.</p>';
     }
 }
 
@@ -39,23 +36,20 @@ function safeURL(url) {
     return trimmedUrl;
 }
 
-function renderNews1Short(news1Items, grid) {
-    if (!Array.isArray(news1Items) || news1Items.length === 0) {
-        grid.innerHTML = '<p class="news1-empty">Новости временно недоступны.</p>';
+function renderArchive(newsItems, grid) {
+    if (!Array.isArray(newsItems) || newsItems.length === 0) {
+        grid.innerHTML = '<p class="news1-empty">Архив новостей пуст.</p>';
         return;
     }
-    
-    const htmlContent = news1Items.map(item => {
+    grid.innerHTML = newsItems.map(item => {
         const safeItem = item || {};
         
         // ВАЛИДАЦИЯ И ЗАГЛУШКИ
-        const link = safeURL(safeItem.url);
         const title = safeItem.title && safeItem.title.trim() ? safeItem.title : 'Новость FalkoTeam';
         const text = safeItem.text && safeItem.text.trim() ? safeItem.text : 'Подробности читайте на странице публикации.';
         const altText = safeItem.alt && safeItem.alt.trim() ? safeItem.alt : title;
         const date = safeItem.date && safeItem.date.trim() ? safeItem.date : '';
 
-        // Проверка картинок: сначала смотрим одиночную image, затем массив images, иначе — заглушка
         let finalImage = DEFAULT_IMAGE;
         if (safeItem.image && safeItem.image.trim()) {
             finalImage = safeItem.image;
@@ -64,7 +58,7 @@ function renderNews1Short(news1Items, grid) {
         }
 
         return `
-            <a href="${escapeHTML(link)}" class="news1-card" rel="noopener noreferrer">
+            <a href="${escapeHTML(safeURL(safeItem.url))}" class="news1-card" rel="noopener noreferrer">
                 <div class="news1-card__image-wrap">
                     <img src="${escapeHTML(finalImage)}" alt="${escapeHTML(altText)}" class="news1-card__image" loading="lazy">
                 </div>
@@ -78,11 +72,10 @@ function renderNews1Short(news1Items, grid) {
             </a>
         `;
     }).join('');
-    grid.innerHTML = htmlContent;
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadNews1Data);
+    document.addEventListener('DOMContentLoaded', loadArchiveData);
 } else {
-    loadNews1Data();
+    loadArchiveData();
 }

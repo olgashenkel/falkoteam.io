@@ -67,7 +67,7 @@
             padding: 50px 0;
 
             & p {
-                margin: 5px 0; /* Упорядочиваем отступы у абзацев */
+                margin: 5px 0; 
             }
 
             & a {
@@ -130,15 +130,8 @@
                 max-width: 90%;
                 height: auto;
                 padding: 20px 0;
-                gap: 25px;
-
-
-               
+                gap: 25px;               
             }
         }
     }
-
-
-
-
 }

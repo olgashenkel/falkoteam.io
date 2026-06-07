@@ -58,10 +58,21 @@
 
       <hr class="gradient-line">
 
+
+
       <!-- Новостной блок (вариант № 1) -->
       <div class="news1">
         <h1>Информация о тхэквондо или новости</h1>
         <div class="news1-grid" id="news1-grid"></div>
+
+        <!-- Кнопка перехода на страницу news.html -->
+        <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
+          <a href="news.html"
+            style="display: inline-block; padding: 14px 32px; background-color: #000000; color: #ffffff; text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 700; border-radius: 8px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; border: 2px solid #ffffff; transition: all 0.3s;"
+            onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='#000000'; this.style.borderColor='#000000'"
+            onmouseout="this.style.backgroundColor='#000000'; this.style.color='#ffffff'; this.style.borderColor='#ffffff'">Все
+            новости проекта</a>
+        </div>
       </div>
 
 
@@ -83,6 +94,67 @@
 
 
   <site-footer></site-footer>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const container = document.getElementById('main-news-container');
+
+      // Читаем файл со всеми новостями
+      fetch('news.html')
+        .then(response => {
+          if (!response.ok) throw new Error('Ошибка загрузки');
+          return response.text();
+        })
+        .then(htmlText => {
+          // Превращаем текст в HTML-код, с которым можно работать
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlText, 'text/html');
+
+          // Находим все новости на странице news.html
+          const allNews = Array.from(doc.querySelectorAll('.news-item'));
+
+          if (allNews.length === 0) {
+            container.innerHTML = '<p>Пока нет опубликованных новостей.</p>';
+            return;
+          }
+
+          container.innerHTML = ''; // Очищаем надпись "Загрузка..."
+
+          // Вырезаем строго первые 6 новостей (самые верхние = самые свежие)
+          const latestNews = allNews.slice(0, 6);
+
+          // Переносим их на главную страницу с базовыми красивыми стилями
+          latestNews.forEach(item => {
+            const img = item.querySelector('img');
+            const titleAnchor = item.querySelector('h3 a');
+            const date = item.querySelector('.news-date');
+
+            // Создаем красивую строку (карточка: картинка + текст)
+            const card = document.createElement('div');
+            card.style.cssText = "display: flex; gap: 20px; align-items: center; border-bottom: 1px solid #eee; padding: 15px 0; text-align: left;";
+
+            // Меняем ссылку, чтобы при клике на главной пользователя перекидывало на страницу news.html
+            if (titleAnchor) {
+              titleAnchor.href = 'news.html' + titleAnchor.getAttribute('href');
+            }
+
+            card.innerHTML = `
+                    <img src="${img ? img.src : 'images/default.jpg'}" style="width: 120px; height: 80px; object-fit: cover; border-radius: 4px; background: #f0f0f0;">
+                    <div>
+                        <div style="color: #6c757d; font-size: 0.85rem; font-weight: bold;">${date ? date.innerText : ''}</div>
+                        <h3 style="margin: 5px 0 0 0; font-size: 1.15rem;">${titleAnchor ? titleAnchor.outerHTML : ''}</h3>
+                    </div>
+                `;
+            container.appendChild(card);
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          container.innerHTML = '<p>Не удалось загрузить свежие новости.</p>';
+        });
+    });
+  </script>
 
 </body>
 
